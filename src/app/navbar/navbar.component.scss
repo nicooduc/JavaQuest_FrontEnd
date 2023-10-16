@@ -1,42 +1,46 @@
 @use "src/theme";
 
 nav {
-  height: 80px;
-  background: linear-gradient(to right, theme.$common-purple, theme.$common-red);
+  width: 80px; /* Largeur de la barre de navigation */
+  height: 100%;
+  background: linear-gradient(to bottom, #c9b5a1, #b3a090);
+  display: flex;
+  flex-direction: column;
 
   div {
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
 
     img {
-      margin-left: 20px;
-      height: 60px;
+      margin: 10px;
+      width: 60px;
       transition: .3s;
 
       &:hover {
         transform: scale(1.1);
       }
     }
-
-    .active {
-      text-decoration: underline;
-    }
   }
 }
 
 .mat-nav-list {
-  margin-left: 50px;
-  padding: 0;
+  //margin-left: 5px;
   display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 .mat-list-base .mat-list-item {
-  font-size: large;
+  font-size: medium;
   color: theme.$white;
   transition: .3s;
+  display: flex;
+  justify-content: center;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
+    text-decoration: underline;
   }
 }
