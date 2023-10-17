@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core"
+/*import { Injectable } from "@angular/core"
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router"
 import { Observable } from "rxjs"
 import { MonsterService } from "services/monster.service"
@@ -14,4 +14,4 @@ export class FightResolver implements Resolve<Monster[]> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Monster[]> {
     return this.monsterService.findAll()
   }
-}
+}*/
