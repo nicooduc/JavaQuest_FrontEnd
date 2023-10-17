@@ -1,7 +1,8 @@
 import { NgModule } from "@angular/core"
 import { RouterModule, Routes } from "@angular/router"
-import { FightComponent } from "fight/fight.component"
+import { StoryComponent } from "story/story.component"
 import { HomeComponent } from "home/home.component"
+import {FightComponent} from "./fight/fight.component";
 //import { FightResolver } from "fight/fight.resolver"
 
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
        //majors: FightResolver,
      //},
   },
+  { path: 'story', component: StoryComponent },
 ]
 
 @NgModule({

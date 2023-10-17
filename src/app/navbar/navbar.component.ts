@@ -11,7 +11,8 @@ export class NavbarComponent implements OnInit {
   links: Link[] = [];
 
   ngOnInit() {
-    this.links.push({name: "Combat", href: "fight"});
+    this.links.push({name: "Histoire", href: "story"});
     this.links.push({name: "Stats", href: "stats"});
+    this.links.push({name: "Combat", href: "fight"});
   }
 }
