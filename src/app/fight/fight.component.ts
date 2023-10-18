@@ -16,7 +16,7 @@ export class FightComponent {
 
   //constructor(private _route: ActivatedRoute) {
   //}
-  private opponents: Opponent[] | undefined;
+  public opponents: Opponent[] | undefined;
   constructor(private opponentService: OpponentService) { }
   ngOnInit(): void {
     this.opponentService.findAll().subscribe((opponents: Opponent[]) => {
