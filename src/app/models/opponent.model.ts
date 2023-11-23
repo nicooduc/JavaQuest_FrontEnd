@@ -1,10 +1,11 @@
 export interface Opponent {
   id?: number
   type?: string
+  name?: string
   image?: string
-  health_point?: number
-  attack_point?: number
-  defense_point?: number
-  magic_point?: number
+  healthPoint?: number
+  attackPoint?: number
+  defensePoint?: number
+  magicPoint?: number
   speed?: number
 }

@@ -11,26 +11,26 @@ export class HeroService {
   constructor(private http: HttpClient) {
   }
 
-  private studentsUrl = "http://localhost:8080/students"
+  private heroUrl = "http://localhost:8080/hero"
 
   findAll(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.studentsUrl)
+    return this.http.get<Hero[]>(this.heroUrl)
   }
 
   findById(id: number): Observable<Hero> {
-    return this.http.get<Hero>(`${this.studentsUrl}/${id}`)
+    return this.http.get<Hero>(`${this.heroUrl}/${id}`)
   }
 
   update(id: number, student: Hero): Observable<Hero> {
-    return this.http.post<Hero>(`${this.studentsUrl}/${id}`, student)
+    return this.http.post<Hero>(`${this.heroUrl}/${id}`, student)
   }
 
   create(student: Hero): Observable<Hero> {
-    return this.http.post<Hero>(this.studentsUrl, student)
+    return this.http.post<Hero>(this.heroUrl, student)
   }
 
   delete(student: Hero) {
-    return this.http.delete(`${this.studentsUrl}/${student.id}`)
+    return this.http.delete(`${this.heroUrl}/${student.id}`)
   }
 
 }

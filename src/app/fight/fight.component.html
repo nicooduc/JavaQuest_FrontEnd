@@ -11,8 +11,20 @@
       Il était une fois une suimulation dans un monde de fantasie avec des petis vilalges d'irreductibles gaullois
     </p>
     <div *ngFor="let opponent of opponents">
-      <p>{{ opponent.id }}</p>
-      <p>{{ opponent.health_point }}</p>
+      <p>
+        <span>Type: </span>
+        <strong>{{ opponent.type }}</strong>
+        <span> ID: </span>
+        <strong>{{ opponent.id }}</strong>
+        <span> Health Point: </span>
+        <strong>{{ opponent.healthPoint }}</strong>
+        <span> attack Point: </span>
+        <strong>{{ opponent.attackPoint }}</strong>
+        <span> Defense Point: </span>
+        <strong>{{ opponent.defensePoint }}</strong>
+
+
+      </p>
     </div>
   </div>
 

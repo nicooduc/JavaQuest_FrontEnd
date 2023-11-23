@@ -35,6 +35,10 @@ export class OpponentService {
     return this.http.get<Opponent[]>(this.opponentsUrl)
   }
 
+  startCombat(): Observable<Opponent[]>{
+    return this.http.get<Opponent[]>(`${this.opponentsUrl}/startCombat`)
+  }
+
   findById(id: number): Observable<Opponent> {
     return this.http.get<Opponent>(`${this.opponentsUrl}/${id}`)
   }
