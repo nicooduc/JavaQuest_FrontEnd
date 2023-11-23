@@ -3,44 +3,28 @@
   <div class="left-page">
     <div class="title">
       <h1>
-        TITRE (assez) STYLE
+        Combat contre : {{ monsterName}}
       </h1>
     </div>
   <div class="story-text">
     <p>
-      Il était une fois une suimulation dans un monde de fantasie avec des petis vilalges d'irreductibles gaullois
+      Description du monstre
     </p>
-    <div *ngFor="let opponent of opponents">
-      <p>
-        <span>Type: </span>
-        <strong>{{ opponent.type }}</strong>
-        <span> ID: </span>
-        <strong>{{ opponent.id }}</strong>
-        <span> NAME: </span>
-        <strong>{{ opponent.name }}</strong>
-        <span> Health Point: </span>
-        <strong>{{ opponent.healthPoint }}</strong>
-        <span> attack Point: </span>
-        <strong>{{ opponent.attackPoint }}</strong>
-        <span> Defense Point: </span>
-        <strong>{{ opponent.defensePoint }}</strong>
-
-
-      </p>
-    </div>
+    <p>
+      PV du monstre :
+    </p>
+    <p>
+      {{monsterHP}}
+      {{monsterDef}}
+      {{heroAtk}}
+    </p>
   </div>
 
 
     <div class="option-text">
-      <p>
-        1 : Attaque
-      </p>
-      <p>
-        2 : Defense
-      </p>
-      <p>
-        3 : Magie
-      </p>
+      <p><a href="javascript:void(0)" (click)="attaquer()">1 : Attaque</a></p>
+      <p><a href="javascript:void(0)" (click)="defendre()">2 : Defense</a></p>
+      <p><a href="javascript:void(0)" (click)="lancerMagie()">3 : Magie</a></p>
     </div>
 
   </div>

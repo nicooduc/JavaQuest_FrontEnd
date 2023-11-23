@@ -38,7 +38,9 @@ export class OpponentService {
   startCombat(): Observable<Opponent[]>{
     return this.http.get<Opponent[]>(`${this.opponentsUrl}/startCombat`)
   }
-
+  attack(): Observable<Opponent[]>{
+    return this.http.get<Opponent[]>(`${this.opponentsUrl}/attack`)
+  }
   findById(id: number): Observable<Opponent> {
     return this.http.get<Opponent>(`${this.opponentsUrl}/${id}`)
   }
@@ -54,6 +56,7 @@ export class OpponentService {
   delete(opponent: Opponent) {
     return this.http.delete(`${this.opponentsUrl}/${opponent.id}`)
   }
+
 
 }
 
