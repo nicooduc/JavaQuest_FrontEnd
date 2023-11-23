@@ -19,13 +19,8 @@ export class FightComponent {
   public opponents: Opponent[] | undefined;
   constructor(private opponentService: OpponentService) { }
   ngOnInit(): void {
-    /*this.opponentService.findAll().subscribe((opponents: Opponent[]) => {
-      // Traitez les données reçues, par exemple en les stockant dans une variable du composant
-      this.opponents = opponents;
-    });*/
-
     this.opponentService.startCombat().subscribe((opponents: Opponent[]) => {
-      // Traitez les données reçues, par exemple en les stockant dans une variable du composant
       this.opponents = opponents;
-    });    }
+    });
+  }
 }
