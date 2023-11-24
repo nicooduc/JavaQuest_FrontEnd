@@ -1,8 +1,5 @@
-import { Component } from "@angular/core"
-import { map, Observable } from "rxjs"
-import { Monster } from "models/monster.model"
-import { ActivatedRoute } from "@angular/router"
-import { OpponentService } from "services/opponent.service";
+import {Component} from "@angular/core"
+import {FightService} from "services/fight.service";
 import {Opponent} from "../models/opponent.model";
 
 
@@ -13,50 +10,90 @@ import {Opponent} from "../models/opponent.model";
 })
 export class FightComponent {
   public opponents: Opponent[] | undefined;
+  public monsterIndex: number | undefined;
+  public heroIndex: number | undefined;
+  public monsterDead: boolean = false;
+  public heroDead: boolean = false;
+
   public monsterName: string | undefined;
+  public monsterImg: string | undefined;
   public monsterHP: number | undefined;
+  public monsterAtk: number | undefined;
   public monsterDef: number | undefined;
+  public monsterMag: number | undefined;
+  public monsterSpeed: number | undefined;
+
+  public heroName: string | undefined;
+  public heroImg: string | undefined;
+  public heroHP: number | undefined;
   public heroAtk: number | undefined;
-  public monster: number | null = null;
-  public hero: number | 0;
-  constructor(private opponentService: OpponentService) {
-    this.hero = 0;
-    this.monster = 0;
+  public heroDef: number | undefined;
+  public heroMag: number | undefined;
+  public heroSpeed: number | undefined;
+
+  constructor(private fightService: FightService) {
   }
+
   ngOnInit(): void {
-    this.opponentService.startCombat().subscribe((opponents: Opponent[]) => {
+    this.fightService.startCombat().subscribe((opponents: Opponent[]) => {
       this.opponents = opponents;
-      if (opponents[0].type == "hero") {
-        this.hero = 0;
-        this.monster = 1;
-      } else {
-        this.hero = 1;
-        this.monster = 0;
-      }
-      this.monsterName = opponents[this.monster].name;
-      this.monsterHP = opponents[this.monster].healthPoint;
-      this.monsterDef = opponents[this.monster].defensePoint;
-      this.heroAtk = opponents[this.hero].attackPoint;
+      this.updateOpponentCharacteristics();
     });
-
   }
 
-  attaquer() {
-    const currentMonsterIndex = this.opponents?.findIndex(opponent => opponent.type === 'monster');
-    if (currentMonsterIndex !== -1 && this.opponents) {
-      this.monster = currentMonsterIndex ?? null;
-      this.opponentService.attack().subscribe((opponents: Opponent[]) => {
-        this.opponents = opponents;
-        this.monsterHP = this.opponents[this.monster ?? 0]?.healthPoint;
-      });
+  private updateOpponentCharacteristics(): void {
+    // Récupération de l'index de chaque opposant
+    this.monsterIndex = this.opponents?.findIndex(opponent => opponent.type === 'Monster');
+    this.heroIndex = this.opponents?.findIndex(opponent => opponent.type === 'Hero');
+
+    // Récupération des variables à afficher
+    if (this.opponents && this.monsterIndex !== undefined && this.heroIndex !== undefined) {
+      this.monsterName = this.opponents[this.monsterIndex]?.name;
+      this.monsterImg = this.opponents[this.monsterIndex]?.image;
+      this.monsterHP = this.opponents[this.monsterIndex]?.healthPoint;
+      this.monsterAtk = this.opponents[this.monsterIndex]?.attackPoint;
+      this.monsterDef = this.opponents[this.monsterIndex]?.defensePoint;
+      this.monsterMag = this.opponents[this.monsterIndex]?.magicPoint;
+      this.monsterSpeed = this.opponents[this.monsterIndex]?.speed;
+
+      this.heroName = this.opponents[this.heroIndex]?.name;
+      this.heroImg = this.opponents[this.heroIndex]?.image;
+      this.heroHP = this.opponents[this.heroIndex]?.healthPoint;
+      this.heroAtk = this.opponents[this.heroIndex]?.attackPoint;
+      this.heroDef = this.opponents[this.heroIndex]?.defensePoint;
+      this.heroMag = this.opponents[this.heroIndex]?.magicPoint;
+      this.heroSpeed = this.opponents[this.heroIndex]?.speed;
     }
-  }
-
-  defendre() {
 
   }
 
-  lancerMagie() {
+  private checkMonsterStatus() {
+    this.fightService.checkOpponentStatus("Monster").subscribe((monsterState: boolean) => {
+      this.monsterDead = monsterState;
+      if (monsterState) {
+        this.monsterHP = 0; // TODO hp negatifs ?
+      }
+      // TODO logique de mort du monstre
+    });
+  }
 
+  private checkHeroStatus() {
+    this.fightService.checkOpponentStatus("Hero").subscribe((heroState: boolean) => {
+      this.heroDead = heroState;
+      if (heroState) {
+        this.heroHP = 0; // TODO hp negatifs ?
+      }
+      // TODO logique de mort du hero
+    });
+  }
+
+  turn(action: String) {
+    this.fightService.turn(action).subscribe((opponents: Opponent[]) => {
+      this.opponents = opponents;
+      this.updateOpponentCharacteristics();
+      this.checkMonsterStatus();
+      this.checkHeroStatus();
+      //TODO a compléter ?
+    })
   }
 }

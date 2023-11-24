@@ -1,5 +1,5 @@
 export interface Opponent {
-  id?: number
+  // id?: number
   type?: string
   name?: string
   image?: string

@@ -1,31 +1,66 @@
-<!--div class="d-flex align-items-center fight-container"-->
 <div class="fight-container">
-  <div class="left-page">
-    <div class="title">
+  <div class="page-left">
+    <div class="title-left">
       <h1>
-        Combat contre : {{ monsterName}}
+        Combat contre : {{monsterName}}
       </h1>
     </div>
-  <div class="story-text">
-    <p>
-      Description du monstre
-    </p>
-    <p>
-      PV du monstre :
-    </p>
-    <p>
-      {{monsterHP}}
-      {{monsterDef}}
-      {{heroAtk}}
-    </p>
+    <div class="content-text">
+      <p>
+        Description du monstre
+      </p>
+      <p>
+        PV du monstre :
+      </p>
+      <p>
+        {{monsterHP}}
+        {{monsterDef}}
+        {{heroAtk}}
+      </p>
+    </div>
+
+    <div class="option-text">
+      <p><a href="javascript:void(0)" (click)="turn('attack')">1 : Attaque</a></p>
+      <p><a href="javascript:void(0)" (click)="turn('defend')">2 : Defense</a></p>
+      <p><a href="javascript:void(0)" (click)="turn('castMagic')">3 : Magie</a></p>
+    </div>
+
+    <div class="bottom-text-left">
+      <p>Info</p>
+      <p>Info</p>
+    </div>
   </div>
 
 
-    <div class="option-text">
-      <p><a href="javascript:void(0)" (click)="attaquer()">1 : Attaque</a></p>
-      <p><a href="javascript:void(0)" (click)="defendre()">2 : Defense</a></p>
-      <p><a href="javascript:void(0)" (click)="lancerMagie()">3 : Magie</a></p>
+  <div class="page-right">
+    <div class="title-right">
+      <h1>
+        Combat contre : {{monsterName}}
+      </h1>
+    </div>
+    <div class="content-text">
+      <p>
+        Description du monstre
+      </p>
+      <p>
+        PV du monstre :
+      </p>
+      <p>
+        {{monsterHP}}
+        {{monsterDef}}
+        {{heroAtk}}
+      </p>
     </div>
 
+    <div class="option-text">
+      <p><a href="javascript:void(0)" (click)="turn('attack')">1 : Attaque</a></p>
+      <p><a href="javascript:void(0)" (click)="turn('defend')">2 : Defense</a></p>
+      <p><a href="javascript:void(0)" (click)="turn('castMagic')">3 : Magie</a></p>
+    </div>
+
+    <div class="bottom-text-right">
+      <p>Info</p>
+      <p>Info</p>
+    </div>
   </div>
 </div>

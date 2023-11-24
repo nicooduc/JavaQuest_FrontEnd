@@ -4,31 +4,48 @@
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .mat-mini-fab {
-  color : theme.$white !important;
+  color: theme.$white !important;
 }
 
 .mat-raised-button {
-  color : theme.$white !important;
+  color: theme.$white !important;
 }
 
 table {
   font-size: medium;
+
   tr {
     height: 57px;
+
     td {
       vertical-align: middle;
     }
   }
 }
 
+//body {
+//  display: flex;
+//  background-image: url('assets/BOOKFORMATED.png');
+//  background-repeat: no-repeat;
+//  background-size: 1280px 720px;
+//  //background-size: 100% 100%;
+//}
+
 body {
   display: flex;
+  margin: 0;
   background-image: url('assets/BOOKFORMATED.png');
   background-repeat: no-repeat;
-  background-size: 1280px 720px;
-  //background-size: 100% 100%;
+  background-size: calc(100% - 80px) auto;
+  background-position: 80px 0;
 }

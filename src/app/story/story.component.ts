@@ -1,8 +1,5 @@
-import { Component } from "@angular/core"
-import { map, Observable } from "rxjs"
-import { Monster } from "models/monster.model"
-import { ActivatedRoute } from "@angular/router"
-import { OpponentService } from "services/opponent.service";
+import {Component} from "@angular/core"
+import {FightService} from "services/fight.service";
 import {Opponent} from "../models/opponent.model";
 
 
@@ -12,20 +9,24 @@ import {Opponent} from "../models/opponent.model";
   styleUrls: ["./story.component.scss"],
 })
 export class StoryComponent {
- // monster$: Observable<Monster[]> = this._route.data.pipe(map((data) => data["monster"]))
+  // monster$: Observable<Monster[]> = this._route.data.pipe(map((data) => data["monster"]))
 
   //constructor(private _route: ActivatedRoute) {
   //}
   public opponents: Opponent[] | undefined;
-  constructor(private opponentService: OpponentService) { }
+
+  constructor(private fightService: FightService) {
+  }
+
   ngOnInit(): void {
-    /*this.opponentService.findAll().subscribe((opponents: Opponent[]) => {
+    /*this.fightService.findAll().subscribe((opponents: Opponent[]) => {
       // Traitez les données reçues, par exemple en les stockant dans une variable du composant
       this.opponents = opponents;
     });*/
 
-    this.opponentService.startCombat().subscribe((opponents: Opponent[]) => {
+    this.fightService.startCombat().subscribe((opponents: Opponent[]) => {
       // Traitez les données reçues, par exemple en les stockant dans une variable du composant
       this.opponents = opponents;
-    });    }
+    });
+  }
 }
