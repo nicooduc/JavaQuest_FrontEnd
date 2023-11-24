@@ -1,6 +1,7 @@
 import {Component} from "@angular/core"
 import {FightService} from "services/fight.service";
 import {Opponent} from "../models/opponent.model";
+import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
@@ -9,6 +10,7 @@ import {Opponent} from "../models/opponent.model";
   styleUrls: ["./fight.component.scss"],
 })
 export class FightComponent {
+  private storyChoice: number | undefined;
   public opponents: Opponent[] | undefined;
   public monsterIndex: number | undefined;
   public heroIndex: number | undefined;
@@ -31,10 +33,17 @@ export class FightComponent {
   public heroMag: number | undefined;
   public heroSpeed: number | undefined;
 
-  constructor(private fightService: FightService) {
+  constructor(private fightService: FightService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      const idMonstre = params['idMonstre'];
+      this.storyChoice = params['storyChoice'];
+      console.log(idMonstre);
+      console.log(this.storyChoice);
+    });
+    //TODO startCombat doit pouvoir prendre l'id du monstre
     this.fightService.startCombat().subscribe((opponents: Opponent[]) => {
       this.opponents = opponents;
       this.updateOpponentCharacteristics();
@@ -73,7 +82,8 @@ export class FightComponent {
       if (monsterState) {
         this.monsterHP = 0; // TODO hp negatifs ?
       }
-      // TODO logique de mort du monstre
+      //TODO donner xp au hero / clean la table oponnents
+      this.router.navigate(['/story'], { queryParams: { stroryChoice: this.storyChoice } });
     });
   }
 
@@ -83,7 +93,7 @@ export class FightComponent {
       if (heroState) {
         this.heroHP = 0; // TODO hp negatifs ?
       }
-      // TODO logique de mort du hero
+      // TODO logique de mort du hero / clean la table oponnents
     });
   }
 

@@ -16,7 +16,7 @@ export class StoryService {
     return this.http.get<Story>(`${this.storyUrl}/startStory`)
   }
 
-  storyChoice(choice: number | undefined): Observable<Story> {
+  storyChoice(choice: number): Observable<Story> {
     return this.http.get<Story>(`${this.storyUrl}/story/${choice}`)
   }
 }
