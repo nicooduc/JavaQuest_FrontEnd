@@ -2,20 +2,21 @@
   <div class="page-left">
     <div class="title-left">
       <h1>
-        Combat contre : {{monsterName}}
+        {{heroName}}
       </h1>
     </div>
     <div class="content-text">
       <p>
-        Description du monstre
+        Description du hero
       </p>
       <p>
-        PV du monstre :
+        PV de {{heroName}} : {{heroHP}}
       </p>
       <p>
-        {{monsterHP}}
-        {{monsterDef}}
-        {{heroAtk}}
+        Défense de {{heroName}} : {{heroDef}}
+      </p>
+      <p>
+        Attaque de {{heroName}} : {{heroAtk}}
       </p>
     </div>
 
@@ -43,19 +44,14 @@
         Description du monstre
       </p>
       <p>
-        PV du monstre :
+        PV de {{monsterName}} : {{monsterHP}}
       </p>
       <p>
-        {{monsterHP}}
-        {{monsterDef}}
-        {{heroAtk}}
+        Défense de {{monsterName}} : {{monsterDef}}
       </p>
-    </div>
-
-    <div class="option-text">
-      <p><a href="javascript:void(0)" (click)="turn('attack')">1 : Attaque</a></p>
-      <p><a href="javascript:void(0)" (click)="turn('defend')">2 : Defense</a></p>
-      <p><a href="javascript:void(0)" (click)="turn('castMagic')">3 : Magie</a></p>
+      <p>
+        Attaque de {{monsterName}} : {{monsterAtk}}
+      </p>
     </div>
 
     <div class="bottom-text-right">

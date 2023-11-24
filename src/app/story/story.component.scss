@@ -1,50 +1,87 @@
 @use "theme";
 
 .fight-container {
-  position: relative;
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  width: calc(100% - 80px);
+  aspect-ratio: 1920 / 1080;
 }
 
-.left-page {
+.page-left, .page-right {
   position: absolute;
-  top: 112px;
-  left: 230px;
-  width: 320px;
-  height: 465px;
   background-color: rgba(255, 0, 0, 0.3);
-  //transform: translate(200%, 0%);
+}
+
+.page-left {
+  top: 15.2%;
+  left: 19.8%;
+  width: 27%;
+  height: 70%;
+}
+
+.page-right {
+  top: 15.2%;
+  left: 53%;
+  width: 28%;
+  height: 70%;
+}
+
+.title-left, .title-right {
+  position: relative;
+  background-color: rgba(0, 255, 0, 0.3);
+}
+
+.title-left {
+  margin-left: 21.7%;
+}
+
+.title-right {
+  margin-right: 20%;
+}
+
+.content-text {
+  position: absolute;
+  width: 100%;
+  top: 10%;
+  background-color: rgba(0, 0, 255, 0.3);
+}
+
+.option-text {
+  position: absolute;
+  width: 100%;
+  bottom: 10%;
+  background-color: rgba(0, 255, 0, 0.3);
+}
+
+.bottom-text-left, .bottom-text-right {
+  position: absolute;
+  width: 80%;
+  bottom: 0;
+  align-content: center;
+  background-color: rgba(0, 0, 255, 0.3);
+}
+
+.bottom-text-left {
+  margin-left: 20%;
+}
+
+.bottom-text-right {
+  margin-right: 20%;
+}
+
+h1 {
+  font-size: 22px;
+  margin: 0;
+  font-family: "Times New Roman";
+  font-weight: bold;
+  color: #6B4E32;
 }
 
 p {
   font-size: 15px;
+  margin: 0;
   font-family: "Times New Roman";
   font-weight: bold;
   font-style: italic;
   text-align: justify;
   color: #6B4E32;
 }
-
-h1 {
-  font-size: 25px;
-  font-family: "Times New Roman";
-  font-weight: bold;
-  color: #6B4E32;
-}
-
-.title {
-  position: relative;
-  left: 70px;
-  align-content: center;
-}
-
-.story-text {
-  position: relative;
-}
-
-.option-text {
-  position: absolute;
-  bottom: 0px;
-  background-color: rgba(0, 255, 0, 0.3);
-}
-

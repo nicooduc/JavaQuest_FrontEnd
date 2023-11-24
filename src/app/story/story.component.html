@@ -1,50 +1,54 @@
-<!--div class="d-flex align-items-center fight-container"-->
 <div class="fight-container">
-  <div class="left-page">
-    <div class="title">
+  <div class="page-left">
+    <div class="title-left">
       <h1>
-        TITRE (assez) STYLE
+        {{localisation}}
       </h1>
     </div>
-    <div class="story-text">
+    <div class="content-text">
       <p>
-        Il était une fois une suimulation dans un monde de fantasie avec des petis vilalges d'irreductibles gaullois
+        {{textDescription}}
       </p>
-      <div *ngFor="let opponent of opponents">
-        <p>
-          <span>Type: </span>
-          <strong>{{ opponent.type }}</strong>
-          <span> NAME: </span>
-          <strong>{{ opponent.name }}</strong>
-          <span> Health Point: </span>
-          <strong>{{ opponent.healthPoint }}</strong>
-          <span> attack Point: </span>
-          <strong>{{ opponent.attackPoint }}</strong>
-          <span> Defense Point: </span>
-          <strong>{{ opponent.defensePoint }}</strong>
-
-
-        </p>
-      </div>
     </div>
-
 
     <div class="option-text">
+      <p><a href="javascript:void(0)" (click)="choice(1)">1 : {{option1}}</a></p>
+      <p><a href="javascript:void(0)" (click)="choice(2)">2 : {{option2}}</a></p>
+      <p><a href="javascript:void(0)" (click)="choice(3)">3 : {{option3}}</a></p>
+      <p><a href="javascript:void(0)" (click)="choice(4)">3 : {{option4}}</a></p>
+    </div>
+
+    <div class="bottom-text-left">
+      <p>Info</p>
+      <p>Info</p>
+    </div>
+  </div>
+
+
+  <div class="page-right">
+    <div class="title-right">
+      <h1>
+        Combat contre :
+      </h1>
+    </div>
+    <div class="content-text">
       <p>
-        1 ;Salut
+        Description du monstre
       </p>
       <p>
-        2 ;Ca va
+        PV de
       </p>
       <p>
-        3 ;Bien et toi ?
+        Défense de
       </p>
       <p>
-        4 ;Bah pas ouf en vrai parce que la la vie c'est pas incroybale je suis a peine fer sur lol sauf que je try hard
-        tous les jours et y a rien je te jure ma douche elle a peur de moi maintenant c'est horrible je sais plus quoi
-        faire
+        Attaque de
       </p>
     </div>
 
+    <div class="bottom-text-right">
+      <p>Info</p>
+      <p>Info</p>
+    </div>
   </div>
 </div>
