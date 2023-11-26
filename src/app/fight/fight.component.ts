@@ -63,6 +63,7 @@ export class FightComponent implements OnInit {
     if (this.opponents && this.monsterIndex !== undefined && this.heroIndex !== undefined) {
       this.monsterName = this.opponents[this.monsterIndex]?.name;
       this.monsterImg = this.opponents[this.monsterIndex]?.image;
+      console.log("monster image" + this.monsterImg);
       this.monsterHP = this.opponents[this.monsterIndex]?.healthPoint;
       this.monsterAtk = this.opponents[this.monsterIndex]?.attackPoint;
       this.monsterDef = this.opponents[this.monsterIndex]?.defensePoint;

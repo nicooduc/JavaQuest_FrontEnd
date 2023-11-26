@@ -7,11 +7,10 @@
     </div>
     <div class="content-text">
       <p class="stats">
-        <!--        <img class="stats-img" ngSrc="assets/icon/coeur.png" alt="Description de l'image" height="512" width="512">-->
-        Vos stats :<br>
-        Vie : {{heroHP}}<br>
-        Défense : {{heroDef}}<br>
-        Attaque : {{heroAtk}}
+        Vos stats :
+        <img class="stats-img" ngSrc="assets/icon/coeur.png" alt="Description de l'image" height="512" width="512"> {{heroHP}},
+        <img class="stats-img" ngSrc="assets/icon/bouclier.png" alt="Description de l'image" height="512" width="512"> {{heroDef}},
+        <img class="stats-img" ngSrc="assets/icon/epee.png" alt="Description de l'image" height="512" width="512"> {{heroAtk}}
       </p>
     </div>
 
@@ -41,7 +40,7 @@
     </div>
 
     <div class="content-img-right">
-      <img ngSrc="assets/monsters/basilisk.png" alt="Image de {{monsterName}}" height="753" width="1000">
+      <img [src]="'assets/monsters/' + monsterImg" alt="Image de {{monsterName}}">
     </div>
 
   </div>
