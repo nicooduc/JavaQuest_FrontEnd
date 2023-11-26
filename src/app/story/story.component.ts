@@ -28,7 +28,6 @@ export class StoryComponent {
     });
     //TODO startStory doit pouvoir reprendre le dernier id
     this.storyService.startStory().subscribe((story: Story) => {
-      // Traitez les données reçues, par exemple en les stockant dans une variable du composant
       this.story = story;
       this.updateStory();
     });
@@ -62,9 +61,10 @@ export class StoryComponent {
     if (this.storyChoice == undefined) {
       console.error("Pas de choix possible");
     } else if (this.storyChoice < 0) {
-      let idMonstre: number = 1;
+      // TODO idMonster a modifier
+      let idMonster: number = 1;
       this.storyChoice = Math.abs(this.storyChoice);
-      this.router.navigate(['/fight'], { queryParams: { idMonstre: idMonstre, stroryChoice: this.storyChoice } });
+      this.router.navigate(['/fight'], { queryParams: { idMonster: idMonster, stroryChoice: this.storyChoice } });
     } else {
       this.storyService.storyChoice(this.storyChoice).subscribe((story: Story) => {
         this.story = story;

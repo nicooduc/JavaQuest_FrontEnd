@@ -5,17 +5,13 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 
 @Component({
-  selector: "epf-majors",
-  templateUrl: "./fight.component.html",
-  styleUrls: ["./fight.component.scss"],
+  selector: "epf-majors", templateUrl: "./fight.component.html", styleUrls: ["./fight.component.scss"],
 })
 export class FightComponent {
+  private opponents: Opponent[] | undefined;
+  private monsterIndex: number | undefined;
+  private heroIndex: number | undefined;
   private storyChoice: number | undefined;
-  public opponents: Opponent[] | undefined;
-  public monsterIndex: number | undefined;
-  public heroIndex: number | undefined;
-  public monsterDead: boolean = false;
-  public heroDead: boolean = false;
 
   public monsterName: string | undefined;
   public monsterImg: string | undefined;
@@ -37,10 +33,11 @@ export class FightComponent {
   }
 
   ngOnInit(): void {
+    let idMonster: number;
     this.route.queryParams.subscribe(params => {
-      const idMonstre = params['idMonstre'];
+      idMonster = params['idMonster'];
       this.storyChoice = params['storyChoice'];
-      console.log(idMonstre);
+      console.log(idMonster);
       console.log(this.storyChoice);
     });
     //TODO startCombat doit pouvoir prendre l'id du monstre
@@ -48,6 +45,16 @@ export class FightComponent {
       this.opponents = opponents;
       this.updateOpponentCharacteristics();
     });
+  }
+
+  public turn(action: String) {
+    this.fightService.turn(action).subscribe((opponents: Opponent[]) => {
+      this.opponents = opponents;
+      this.updateOpponentCharacteristics();
+      //TODO a compléter ?
+    })
+    this.checkMonsterStatus();
+    this.checkHeroStatus();
   }
 
   private updateOpponentCharacteristics(): void {
@@ -78,32 +85,31 @@ export class FightComponent {
 
   private checkMonsterStatus() {
     this.fightService.checkOpponentStatus("Monster").subscribe((monsterState: boolean) => {
-      this.monsterDead = monsterState;
       if (monsterState) {
-        this.monsterHP = 0; // TODO hp negatifs ?
+        this.monsterHP = 0;
+        this.fightEnd();
+        this.router.navigate(['/story'], {queryParams: {stroryChoice: this.storyChoice}});
       }
-      //TODO donner xp au hero / clean la table oponnents
-      this.router.navigate(['/story'], { queryParams: { stroryChoice: this.storyChoice } });
     });
   }
 
   private checkHeroStatus() {
     this.fightService.checkOpponentStatus("Hero").subscribe((heroState: boolean) => {
-      this.heroDead = heroState;
       if (heroState) {
-        this.heroHP = 0; // TODO hp negatifs ?
+        this.heroHP = 0;
       }
       // TODO logique de mort du hero / clean la table oponnents
     });
   }
 
-  turn(action: String) {
-    this.fightService.turn(action).subscribe((opponents: Opponent[]) => {
-      this.opponents = opponents;
-      this.updateOpponentCharacteristics();
-      this.checkMonsterStatus();
-      this.checkHeroStatus();
-      //TODO a compléter ?
+  private fightEnd() {
+    this.fightService.endFight().subscribe((xpGain: number) => {
+      //TODO afficher le gain d'xp / le LVL up
+      if (xpGain < 0) {
+        xpGain = Math.abs(xpGain);
+        console.log("Level Up");
+      }
+      console.log(xpGain);
     })
   }
 }
