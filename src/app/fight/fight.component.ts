@@ -33,7 +33,7 @@ export class FightComponent {
   }
 
   ngOnInit(): void {
-    let idMonster: number;
+    let idMonster: number = 1;
     this.route.queryParams.subscribe(params => {
       idMonster = params['idMonster'];
       this.storyChoice = params['storyChoice'];
@@ -41,7 +41,7 @@ export class FightComponent {
       console.log(this.storyChoice);
     });
     //TODO startCombat doit pouvoir prendre l'id du monstre
-    this.fightService.startCombat().subscribe((opponents: Opponent[]) => {
+    this.fightService.startCombat(idMonster).subscribe((opponents: Opponent[]) => {
       this.opponents = opponents;
       this.updateOpponentCharacteristics();
     });

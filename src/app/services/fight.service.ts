@@ -12,8 +12,8 @@ export class FightService {
   constructor(private http: HttpClient) {
   }
 
-  startCombat(): Observable<Opponent[]> {
-    return this.http.get<Opponent[]>(`${this.fightsUrl}/startCombat`)
+  startCombat(idMonster: number): Observable<Opponent[]> {
+    return this.http.get<Opponent[]>(`${this.fightsUrl}/startCombat/${idMonster}`)
   }
 
   turn(action: String): Observable<Opponent[]> {
