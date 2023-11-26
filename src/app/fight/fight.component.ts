@@ -88,7 +88,7 @@ export class FightComponent {
       if (monsterState) {
         this.monsterHP = 0;
         this.fightEnd();
-        this.router.navigate(['/story'], {queryParams: {stroryChoice: this.storyChoice}});
+        this.router.navigate(['/story'], {queryParams: {storyChoice: this.storyChoice}});
       }
     });
   }

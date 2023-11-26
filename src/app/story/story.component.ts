@@ -9,8 +9,9 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ["./story.component.scss"],
 })
 export class StoryComponent {
-  public story: Story | undefined;
-  public storyChoice: number | undefined;
+  private story: Story | undefined;
+  private storyChoice: number | undefined;
+
   public textDescription: string | undefined;
   public localisation: string | undefined;
   public option1: string | undefined;
@@ -26,8 +27,8 @@ export class StoryComponent {
       this.storyChoice = params['storyChoice'];
       console.log(this.storyChoice);
     });
-    //TODO startStory doit pouvoir reprendre le dernier id
-    this.storyService.startStory().subscribe((story: Story) => {
+    this.storyChoice = this.storyChoice ?? 1;
+    this.storyService.startStory(this.storyChoice).subscribe((story: Story) => {
       this.story = story;
       this.updateStory();
     });
@@ -64,7 +65,7 @@ export class StoryComponent {
       // TODO idMonster a modifier
       let idMonster: number = 1;
       this.storyChoice = Math.abs(this.storyChoice);
-      this.router.navigate(['/fight'], { queryParams: { idMonster: idMonster, stroryChoice: this.storyChoice } });
+      this.router.navigate(['/fight'], { queryParams: { idMonster: idMonster, storyChoice: this.storyChoice } });
     } else {
       this.storyService.storyChoice(this.storyChoice).subscribe((story: Story) => {
         this.story = story;

@@ -12,8 +12,8 @@ export class StoryService {
 
   private storyUrl = "http://localhost:8080/story"
 
-  startStory(): Observable<Story> {
-    return this.http.get<Story>(`${this.storyUrl}/startStory`)
+  startStory(storyNextID: number): Observable<Story> {
+    return this.http.get<Story>(`${this.storyUrl}/startStory/${storyNextID}`)
   }
 
   storyChoice(choice: number): Observable<Story> {
