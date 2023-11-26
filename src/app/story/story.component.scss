@@ -8,7 +8,7 @@
 
 .page-left, .page-right {
   position: absolute;
-  background-color: rgba(255, 0, 0, 0.3);
+  //background-color: rgba(255, 0, 0, 0.3);
 }
 
 .page-left {
@@ -27,7 +27,7 @@
 
 .title-left, .title-right {
   position: relative;
-  background-color: rgba(0, 255, 0, 0.3);
+  //background-color: rgba(0, 255, 0, 0.3);
 }
 
 .title-left {
@@ -42,7 +42,7 @@
   position: absolute;
   width: 100%;
   top: 10%;
-  background-color: rgba(0, 0, 255, 0.3);
+  //background-color: rgba(0, 0, 255, 0.3);
 }
 
 .content-img-left, .content-img-right {
@@ -50,7 +50,7 @@
   width: 100%;
   top: 10%;
   align-items: center;
-  background-color: rgba(0, 255, 255, 0.3);
+  //background-color: rgba(0, 255, 255, 0.3);
 }
 
 .content-img-right {
@@ -61,7 +61,7 @@
   position: absolute;
   width: 100%;
   bottom: 10%;
-  background-color: rgba(0, 255, 0, 0.3);
+  //background-color: rgba(0, 255, 0, 0.3);
 }
 
 .bottom-text-left, .bottom-text-right {
@@ -69,7 +69,7 @@
   width: 80%;
   bottom: 0;
   align-content: center;
-  background-color: rgba(0, 0, 255, 0.3);
+  //background-color: rgba(0, 0, 255, 0.3);
 }
 
 .bottom-text-left {
@@ -87,17 +87,17 @@ img {
 }
 
 h1 {
-  font-size: 22px;
+  font-size: 2vw;
   margin: 0;
-  font-family: "Times New Roman";
+  font-family: "Times New Roman", serif;
   font-weight: bold;
   color: #6B4E32;
 }
 
 p {
-  font-size: 15px;
+  font-size: 1vw;
   margin: 0;
-  font-family: "Times New Roman";
+  font-family: "Times New Roman", serif;
   font-weight: bold;
   font-style: italic;
   text-align: justify;

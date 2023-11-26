@@ -7,10 +7,10 @@ import {HttpClient} from "@angular/common/http"
   providedIn: "root",
 })
 export class StoryService {
+  private storyUrl = "http://localhost:8080/story"
+
   constructor(private http: HttpClient) {
   }
-
-  private storyUrl = "http://localhost:8080/story"
 
   startStory(storyNextID: number): Observable<Story> {
     return this.http.get<Story>(`${this.storyUrl}/startStory/${storyNextID}`)

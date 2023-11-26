@@ -24,22 +24,8 @@ export class FightService {
     return this.http.get<boolean>(`${this.fightsUrl}/check${type}Status`)
   }
 
-  endFight(): Observable<number> {
-    return this.http.get<number>(`${this.fightsUrl}/endFight`)
-  }
-
-
-  // TODO supprimer les lignes suivantes après s'en être inspiré
-  findById(id: number): Observable<Opponent> {
-    return this.http.get<Opponent>(`${this.fightsUrl}/${id}`)
-  }
-
-  update(id: number, opponent: Opponent): Observable<Opponent> {
-    return this.http.post<Opponent>(`${this.fightsUrl}/${id}`, opponent)
-  }
-
-  create(opponent: Opponent): Observable<Opponent> {
-    return this.http.post<Opponent>(this.fightsUrl, opponent)
+  endFight(success: boolean): Observable<number> {
+    return this.http.get<number>(`${this.fightsUrl}/endFight/${success}`)
   }
 }
 

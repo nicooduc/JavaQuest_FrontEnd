@@ -1,4 +1,4 @@
-import {Component} from "@angular/core"
+import {Component, OnInit} from "@angular/core"
 import {FightService} from "services/fight.service";
 import {Opponent} from "../models/opponent.model";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -7,12 +7,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 @Component({
   selector: "epf-majors", templateUrl: "./fight.component.html", styleUrls: ["./fight.component.scss"],
 })
-export class FightComponent {
-  private opponents: Opponent[] | undefined;
-  private monsterIndex: number | undefined;
-  private heroIndex: number | undefined;
-  private storyChoice: number | undefined;
-
+export class FightComponent implements OnInit {
+  public xpGain: number = 0;
   public monsterName: string | undefined;
   public monsterImg: string | undefined;
   public monsterHP: number | undefined;
@@ -20,7 +16,6 @@ export class FightComponent {
   public monsterDef: number | undefined;
   public monsterMag: number | undefined;
   public monsterSpeed: number | undefined;
-
   public heroName: string | undefined;
   public heroImg: string | undefined;
   public heroHP: number | undefined;
@@ -28,6 +23,10 @@ export class FightComponent {
   public heroDef: number | undefined;
   public heroMag: number | undefined;
   public heroSpeed: number | undefined;
+  private opponents: Opponent[] | undefined;
+  private monsterIndex: number | undefined;
+  private heroIndex: number | undefined;
+  private storyChoice: number | undefined;
 
   constructor(private fightService: FightService, private router: Router, private route: ActivatedRoute) {
   }
@@ -40,7 +39,6 @@ export class FightComponent {
       console.log(idMonster);
       console.log(this.storyChoice);
     });
-    //TODO startCombat doit pouvoir prendre l'id du monstre
     this.fightService.startCombat(idMonster).subscribe((opponents: Opponent[]) => {
       this.opponents = opponents;
       this.updateOpponentCharacteristics();
@@ -86,8 +84,7 @@ export class FightComponent {
     this.fightService.checkOpponentStatus("Monster").subscribe((monsterState: boolean) => {
       if (monsterState) {
         this.monsterHP = 0;
-        this.fightEnd();
-        this.router.navigate(['/story'], {queryParams: {storyChoice: this.storyChoice}});
+        this.fightEnd(true);
       }
     });
   }
@@ -96,19 +93,53 @@ export class FightComponent {
     this.fightService.checkOpponentStatus("Hero").subscribe((heroState: boolean) => {
       if (heroState) {
         this.heroHP = 0;
+        this.fightEnd(false);
       }
-      // TODO logique de mort du hero / clean la table oponnents
     });
   }
 
-  private fightEnd() {
-    this.fightService.endFight().subscribe((xpGain: number) => {
-      //TODO afficher le gain d'xp / le LVL up
-      if (xpGain < 0) {
-        xpGain = Math.abs(xpGain);
-        console.log("Level Up");
+  private fightEnd(success: boolean) {
+    this.fightService.endFight(success).subscribe((xpGain: number) => {
+      if (success) {
+        if (xpGain < 0) {
+          console.log("Level Up");
+          this.xpGain = Math.abs(xpGain);
+          const lvlUpMessage = document.getElementById('lvl-up-message');
+          const closeLvlUpMessage = document.getElementById('close-lvl-up-message');
+
+          if (lvlUpMessage && closeLvlUpMessage) {
+            lvlUpMessage.style.display = 'block';
+            closeLvlUpMessage.addEventListener('click', () => {
+              lvlUpMessage.style.display = 'none';
+              this.router.navigate(['/story'], {queryParams: {storyChoice: this.storyChoice}});
+            });
+          }
+        } else {
+          this.xpGain = xpGain;
+          const gainXPMessage = document.getElementById('gain-xp-message');
+          const closeGainXPMessage = document.getElementById('close-gain-xp-message');
+
+          if (gainXPMessage && closeGainXPMessage) {
+            gainXPMessage.style.display = 'block';
+            closeGainXPMessage.addEventListener('click', () => {
+              gainXPMessage.style.display = 'none';
+              this.router.navigate(['/story'], {queryParams: {storyChoice: this.storyChoice}});
+            });
+          }
+        }
+        console.log(xpGain);
+      } else {
+        const deathMessage = document.getElementById('death-message');
+        const closedeathMessage = document.getElementById('close-death-message');
+
+        if (deathMessage && closedeathMessage) {
+          deathMessage.style.display = 'block';
+          closedeathMessage.addEventListener('click', () => {
+            deathMessage.style.display = 'none';
+            this.router.navigate(['/story'], {queryParams: {storyChoice: 99}}); //TODO remplacer 99 par l'id de story de mort
+          });
+        }
       }
-      console.log(xpGain);
     })
   }
 }

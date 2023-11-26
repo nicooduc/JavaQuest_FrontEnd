@@ -6,33 +6,23 @@
       </h1>
     </div>
     <div class="content-text">
-      <p>
-        Description du hero
-      </p>
-      <p>
-        PV de {{heroName}} : {{heroHP}}
-      </p>
-      <p>
-        Défense de {{heroName}} : {{heroDef}}
-      </p>
-      <p>
-        Attaque de {{heroName}} : {{heroAtk}}
+      <p class="stats">
+        <!--        <img class="stats-img" ngSrc="assets/icon/coeur.png" alt="Description de l'image" height="512" width="512">-->
+        Vos stats :<br>
+        Vie : {{heroHP}}<br>
+        Défense : {{heroDef}}<br>
+        Attaque : {{heroAtk}}
       </p>
     </div>
 
     <div class="content-img-left">
-      <img src="assets/hero/crusader.sprite.defend.png" alt="Description de l'image">
+      <img ngSrc="assets/hero/crusader.sprite.defend.png" alt="Description de l'image" height="721" width="361"> <!--TODO img variable -->
     </div>
 
     <div class="option-text">
       <p><a href="javascript:void(0)" (click)="turn('attack')">1 : Attaque</a></p>
       <p><a href="javascript:void(0)" (click)="turn('defend')">2 : Defense</a></p>
       <p><a href="javascript:void(0)" (click)="turn('castMagic')">3 : Magie</a></p>
-    </div>
-
-    <div class="bottom-text-left">
-      <p>Info</p>
-      <p>Info</p>
     </div>
   </div>
 
@@ -45,18 +35,36 @@
     </div>
 
     <div class="content-text">
-      <p>
-        PV du {{monsterName}} : {{monsterHP}}
+      <p class="stats">
+        <img class="stats-img" ngSrc="assets/icon/coeur.png" alt="Description de l'image" height="512" width="512"> {{monsterHP}}
       </p>
     </div>
 
     <div class="content-img-right">
-      <img src="assets/monsters/basilisk.png" alt="Description de l'image">
+      <img ngSrc="assets/monsters/basilisk.png" alt="Image de {{monsterName}}" height="753" width="1000">
     </div>
 
-    <div class="bottom-text-right">
-      <p>Info</p>
-      <p>Info</p>
+  </div>
+
+  <div id="lvl-up-message" class="message-box">
+    <div class="popup-content">
+      <p class="message">LEVEL UP !</p>
+      <p class="message2">Vous avez gagné {{xpGain}} XP</p>
+      <button id="close-lvl-up-message">Continuer</button>
+    </div>
+  </div>
+
+  <div id="gain-xp-message" class="message-box">
+    <div class="popup-content">
+      <p class="message2">Vous avez gagné {{xpGain}} XP</p>
+      <button id="close-gain-xp-message">Continuer</button>
+    </div>
+  </div>
+
+  <div id="death-message" class="message-box">
+    <div class="popup-content">
+      <p class="message2">Vous êtes mort</p>
+      <button id="close-death-message">Continuer</button>
     </div>
   </div>
 </div>

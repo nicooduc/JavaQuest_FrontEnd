@@ -8,7 +8,7 @@
 
 .page-left, .page-right {
   position: absolute;
-  background-color: rgba(255, 0, 0, 0.3);
+  //background-color: rgba(255, 0, 0, 0.3);
 }
 
 .page-left {
@@ -27,7 +27,8 @@
 
 .title-left, .title-right {
   position: relative;
-  background-color: rgba(0, 255, 0, 0.3);
+  text-align: center;
+  //background-color: rgba(0, 255, 0, 0.3);
 }
 
 .title-left {
@@ -40,15 +41,17 @@
 
 .content-text {
   position: absolute;
+  //display: flex;
   width: 100%;
   top: 10%;
-  background-color: rgba(0, 0, 255, 0.3);
+  //background-color: rgba(0, 0, 255, 0.3);
+  text-align: center;
 }
 
 .content-img-left, .content-img-right {
   position: absolute;
   width: 100%;
-  background-color: rgba(0, 255, 255, 0.3);
+  //background-color: rgba(0, 255, 255, 0.3);
 }
 
 .content-img-right {
@@ -57,15 +60,15 @@
 }
 
 .content-img-left {
-  top: 24%; //TODO adapter en fonction de l'affichage des stats du hero
-  height: 55%; //TODO adapter en fonction de l'affichage des stats du hero
+  top: 22.6%;
+  height: 56%;
 }
 
 .option-text {
   position: absolute;
   width: 100%;
   bottom: 10%;
-  background-color: rgba(0, 255, 0, 0.3);
+  //background-color: rgba(0, 255, 0, 0.3);
 }
 
 .bottom-text-left, .bottom-text-right {
@@ -73,7 +76,7 @@
   width: 80%;
   bottom: 0;
   align-content: center;
-  background-color: rgba(0, 0, 255, 0.3);
+  //background-color: rgba(0, 0, 255, 0.3);
 }
 
 .bottom-text-left {
@@ -91,19 +94,87 @@ img {
 }
 
 h1 {
-  font-size: 22px;
+  font-size: 2vw;
   margin: 0;
-  font-family: "Times New Roman";
+  font-family: "Times New Roman", serif;
   font-weight: bold;
   color: #6B4E32;
 }
 
 p {
-  font-size: 15px;
+  font-size: 1vw;
   margin: 0;
-  font-family: "Times New Roman";
+  font-family: "Times New Roman", serif;
   font-weight: bold;
   font-style: italic;
   text-align: justify;
   color: #6B4E32;
+}
+
+.stats {
+  text-align: center;
+  font-size: 1.4vw;
+  line-height: 1.1em;
+}
+
+.stats-img {
+  vertical-align: top;
+  height: 1em;
+  width: 1em;
+}
+
+
+.message-box {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #c9b5a1;
+  padding: 10px;
+  border: 1px solid #b3a090;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  text-align: center;
+}
+
+.message {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2.5vw;
+  font-family: "Times New Roman", serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.message2 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1vw;
+  font-family: "Times New Roman", serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#close-lvl-up-message {
+  padding: 10px 20px;
+  font-size: 2.5vw;
+  font-family: "Times New Roman", serif;
+  font-weight: bold;
+  font-style: italic;
+  background-color: #725e4b;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#close-gain-xp-message {
+  padding: 10px 20px;
+  font-size: 2.5vw;
+  font-family: "Times New Roman", serif;
+  font-weight: bold;
+  font-style: italic;
+  background-color: #725e4b;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
