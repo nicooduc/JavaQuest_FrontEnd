@@ -22,14 +22,14 @@ export class StoryComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       this.storyChoice = params['storyChoice'];
-      console.log(this.storyChoice);
+      console.log("Appel route : " + this.storyChoice);
     });
     this.storyChoice = this.storyChoice ?? 1;
+    console.log("Final choice : " + this.storyChoice);
     this.storyService.startStory(this.storyChoice).subscribe((story: Story) => {
       this.story = story;
       this.updateStory();
     });
-
   }
 
   choice(choice: number) {
