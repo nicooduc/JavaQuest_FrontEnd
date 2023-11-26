@@ -1,7 +1,7 @@
 export interface Story {
-  descriptionID?: number;
   textDescription?: string;
   localisation?: string;
+  image?: string;
   option1?: string;
   redirection1?: number;
   option2?: string;
@@ -10,5 +10,6 @@ export interface Story {
   redirection3?: number;
   option4?: string;
   redirection4?: number;
+  monsterID?: number;
 }
 

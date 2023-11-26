@@ -51,7 +51,6 @@ export class FightComponent {
     this.fightService.turn(action).subscribe((opponents: Opponent[]) => {
       this.opponents = opponents;
       this.updateOpponentCharacteristics();
-      //TODO a compléter ?
     })
     this.checkMonsterStatus();
     this.checkHeroStatus();

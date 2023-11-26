@@ -1,9 +1,9 @@
 import {Opponent} from "../opponent.model"
 
 export class OpponentDto {
-  opponnent: Opponent
+  opponent: Opponent
 
-  constructor(opponnent: Opponent) {
-    this.opponnent = opponnent
+  constructor(opponent: Opponent) {
+    this.opponent = opponent
   }
 }
