@@ -13,6 +13,8 @@ export class StoryComponent implements OnInit {
   public option2: string | undefined;
   public option3: string | undefined;
   public option4: string | undefined;
+  public storyImg: string | undefined;
+
   private story: Story | undefined;
   private storyChoice: number | undefined;
 
@@ -72,5 +74,6 @@ export class StoryComponent implements OnInit {
     this.option2 = this.story?.option2;
     this.option3 = this.story?.option3;
     this.option4 = this.story?.option4;
+    this.storyImg = this.story?.image;
   }
 }

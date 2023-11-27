@@ -8,14 +8,14 @@
     <div class="content-text">
       <p class="stats">
         Vos stats :
-        <img class="stats-img" ngSrc="assets/icon/coeur.png" alt="Description de l'image" height="512" width="512"> {{heroHP}},
-        <img class="stats-img" ngSrc="assets/icon/bouclier.png" alt="Description de l'image" height="512" width="512"> {{heroDef}},
-        <img class="stats-img" ngSrc="assets/icon/epee.png" alt="Description de l'image" height="512" width="512"> {{heroAtk}}
+        <img class="stats-img" ngSrc="assets/icon/coeur.png" alt="Vie : " height="512" width="512"> {{heroHP}},
+        <img class="stats-img" ngSrc="assets/icon/bouclier.png" alt="Defense : " height="512" width="512"> {{heroDef}},
+        <img class="stats-img" ngSrc="assets/icon/epee.png" alt="Attaque : " height="512" width="512"> {{heroAtk}}
       </p>
     </div>
 
     <div class="content-img-left">
-      <img ngSrc="assets/hero/crusader.sprite.defend.png" alt="Description de l'image" height="721" width="361"> <!--TODO img variable -->
+      <img [src]="'assets/hero/' + actionImg" alt="Image du Hero">
     </div>
 
     <div class="option-text">
@@ -36,7 +36,7 @@
     <div class="content-text">
       <p class="stats">
         <br>
-        <img class="stats-img" ngSrc="assets/icon/coeur.png" alt="Description de l'image" height="512" width="512"> {{monsterHP}}
+        <img class="stats-img" ngSrc="assets/icon/coeur.png" alt="Vie : " height="512" width="512"> {{monsterHP}}
       </p>
     </div>
 

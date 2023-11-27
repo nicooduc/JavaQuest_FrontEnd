@@ -23,6 +23,7 @@ export class FightComponent implements OnInit {
   public heroDef: number | undefined;
   public heroMag: number | undefined;
   public heroSpeed: number | undefined;
+  public actionImg: string | undefined = "crusader.sprite.attack_banner.png";
   private opponents: Opponent[] | undefined;
   private monsterIndex: number | undefined;
   private heroIndex: number | undefined;
@@ -46,6 +47,17 @@ export class FightComponent implements OnInit {
   }
 
   public turn(action: String) {
+    switch (action) {
+        case "attack":
+          this.actionImg = "crusader.sprite.attack_sword.png";
+          break;
+        case "defend":
+          this.actionImg = "crusader.sprite.defend.png";
+          break;
+        case "castMagic":
+          this.actionImg = "crusader.sprite.attack_scroll.png";
+          break;
+    }
     this.fightService.turn(action).subscribe((opponents: Opponent[]) => {
       this.opponents = opponents;
       this.updateOpponentCharacteristics();
