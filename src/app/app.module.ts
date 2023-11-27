@@ -13,25 +13,11 @@ import {MatButtonModule} from "@angular/material/button"
 import {StoryComponent} from "story/story.component"
 import {FightComponent} from "fight/fight.component"
 import {HttpClientModule} from "@angular/common/http"
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    StoryComponent,
-    FightComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatListModule,
-    FormsModule,
-    MatIconModule,
-    MatButtonModule,
-    HttpClientModule,
-  ],
+  declarations: [AppComponent, NavbarComponent, HomeComponent, StoryComponent, FightComponent,],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatListModule, FormsModule, MatIconModule, MatButtonModule, HttpClientModule, NgOptimizedImage,],
   providers: [],
   bootstrap: [AppComponent],
 })

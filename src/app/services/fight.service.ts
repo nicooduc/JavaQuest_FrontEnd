@@ -4,38 +4,28 @@ import {Opponent} from "models/opponent.model"
 import {HttpClient} from "@angular/common/http"
 
 @Injectable({
-  providedIn: "root",
+    providedIn: "root",
 })
 export class FightService {
-  constructor(private http: HttpClient) {
-  }
+    private fightsUrl = "http://localhost:8080/fight"
 
-  private opponentsUrl = "http://localhost:8080/fight"
+    constructor(private http: HttpClient) {
+    }
 
-  startCombat(): Observable<Opponent[]> {
-    return this.http.get<Opponent[]>(`${this.opponentsUrl}/startCombat`)
-  }
+    startCombat(idMonster: number): Observable<Opponent[]> {
+        return this.http.get<Opponent[]>(`${this.fightsUrl}/startCombat/${idMonster}`)
+    }
 
-  checkOpponentStatus(type: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.opponentsUrl}/check${type}Status`);
-  }
+    turn(action: String): Observable<Opponent[]> {
+        return this.http.get<Opponent[]>(`${this.fightsUrl}/turn/${action}`)
+    }
 
-  turn(action: String): Observable<Opponent[]> {
-    return this.http.get<Opponent[]>(`${this.opponentsUrl}/turn/${action}`)
-  }
+    checkOpponentStatus(type: string): Observable<boolean> {
+        return this.http.get<boolean>(`${this.fightsUrl}/check${type}Status`)
+    }
 
-
-  // TODO supprimer les lignes suivantes après s'en être inspiré
-  findById(id: number): Observable<Opponent> {
-    return this.http.get<Opponent>(`${this.opponentsUrl}/${id}`)
-  }
-
-  update(id: number, opponent: Opponent): Observable<Opponent> {
-    return this.http.post<Opponent>(`${this.opponentsUrl}/${id}`, opponent)
-  }
-
-  create(opponent: Opponent): Observable<Opponent> {
-    return this.http.post<Opponent>(this.opponentsUrl, opponent)
-  }
+    endFight(success: boolean): Observable<number> {
+        return this.http.get<number>(`${this.fightsUrl}/endFight/${success}`)
+    }
 }
 

@@ -1,62 +1,85 @@
+<!-- Container principal du combat -->
 <div class="fight-container">
-  <div class="page-left">
-    <div class="title-left">
-      <h1>
-        {{heroName}}
-      </h1>
-    </div>
-    <div class="content-text">
-      <p>
-        Description du hero
-      </p>
-      <p>
-        PV de {{heroName}} : {{heroHP}}
-      </p>
-      <p>
-        Défense de {{heroName}} : {{heroDef}}
-      </p>
-      <p>
-        Attaque de {{heroName}} : {{heroAtk}}
-      </p>
+
+    <!-- Partie gauche de l'écran -->
+    <div class="page-left">
+
+        <!-- Titre du héros -->
+        <div class="title-left">
+            <h1>{{heroName}}</h1>
+        </div>
+
+        <!-- Stats du héros -->
+        <div class="content-text">
+            <p class="stats">
+                Vos stats :
+                <!-- Icônes et valeurs des stats -->
+                <img alt="Vie : " class="stats-img" height="512" ngSrc="assets/icon/coeur.png" width="512"> {{heroHP}},
+                <img alt="Defense : " class="stats-img" height="512" ngSrc="assets/icon/bouclier.png"
+                     width="512"> {{heroDef}},
+                <img alt="Attaque : " class="stats-img" height="512" ngSrc="assets/icon/epee.png"
+                     width="512"> {{heroAtk}}
+            </p>
+        </div>
+
+        <!-- Image d'action du héros -->
+        <div class="content-img-left">
+            <img [src]="'assets/hero/' + actionImg" alt="Image du Hero">
+        </div>
+
+        <!-- Options d'action -->
+        <div class="option-text">
+            <p><a (click)="turn('attack')" href="javascript:void(0)">1 : Attaque</a></p>
+            <p><a (click)="turn('defend')" href="javascript:void(0)">2 : Defense</a></p>
+            <p><a (click)="turn('castMagic')" href="javascript:void(0)">3 : Magie</a></p>
+        </div>
     </div>
 
-    <div class="option-text">
-      <p><a href="javascript:void(0)" (click)="turn('attack')">1 : Attaque</a></p>
-      <p><a href="javascript:void(0)" (click)="turn('defend')">2 : Defense</a></p>
-      <p><a href="javascript:void(0)" (click)="turn('castMagic')">3 : Magie</a></p>
+    <!-- Partie droite de l'écran -->
+    <div class="page-right">
+
+        <!-- Titre du combat contre le monstre -->
+        <div class="title-right">
+            <h1>Combat contre : {{monsterName}}</h1>
+        </div>
+
+        <!-- Stats du monstre -->
+        <div class="content-text">
+            <p class="stats">
+                <br>
+                <img alt="Vie : " class="stats-img" height="512" ngSrc="assets/icon/coeur.png"
+                     width="512"> {{monsterHP}}
+            </p>
+        </div>
+
+        <!-- Image du monstre -->
+        <div class="content-img-right">
+            <img [src]="'assets/monsters/' + monsterImg" alt="Image de {{monsterName}}">
+        </div>
     </div>
 
-    <div class="bottom-text-left">
-      <p>Info</p>
-      <p>Info</p>
-    </div>
-  </div>
-
-
-  <div class="page-right">
-    <div class="title-right">
-      <h1>
-        Combat contre : {{monsterName}}
-      </h1>
-    </div>
-    <div class="content-text">
-      <p>
-        Description du monstre
-      </p>
-      <p>
-        PV de {{monsterName}} : {{monsterHP}}
-      </p>
-      <p>
-        Défense de {{monsterName}} : {{monsterDef}}
-      </p>
-      <p>
-        Attaque de {{monsterName}} : {{monsterAtk}}
-      </p>
+    <!-- Popup de niveau supérieur -->
+    <div class="message-box" id="lvl-up-message">
+        <div class="popup-content">
+            <p class="message">LEVEL UP !</p>
+            <p class="message2">Vous avez gagné {{xpGain}} XP</p>
+            <button id="close-lvl-up-message">Continuer</button>
+        </div>
     </div>
 
-    <div class="bottom-text-right">
-      <p>Info</p>
-      <p>Info</p>
+    <!-- Popup de gain d'XP -->
+    <div class="message-box" id="gain-xp-message">
+        <div class="popup-content">
+            <p class="message2">Vous avez gagné {{xpGain}} XP</p>
+            <button id="close-gain-xp-message">Continuer</button>
+        </div>
     </div>
-  </div>
+
+    <!-- Popup de message de mort -->
+    <div class="message-box" id="death-message">
+        <div class="popup-content">
+            <p class="message2">Vous êtes mort</p>
+            <button id="close-death-message">Continuer</button>
+        </div>
+    </div>
 </div>

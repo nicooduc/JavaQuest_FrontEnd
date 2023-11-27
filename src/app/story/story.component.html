@@ -1,54 +1,41 @@
-<div class="fight-container">
-  <div class="page-left">
-    <div class="title-left">
-      <h1>
-        {{localisation}}
-      </h1>
-    </div>
-    <div class="content-text">
-      <p>
-        {{textDescription}}
-      </p>
+<div class="story-container">
+    <!-- Page gauche de la scène -->
+    <div class="page-left">
+        <!-- Titre à gauche -->
+        <div class="title-left">
+            <h1>
+                {{ localisation }}
+            </h1>
+        </div>
+
+        <!-- Contenu textuel -->
+        <div class="content-text">
+            <p>
+                {{ textDescription }}
+            </p>
+        </div>
+
+        <!-- Options de choix -->
+        <div class="option-text">
+            <a (click)="choice(1)" href="javascript:void(0)">1 : {{ option1 }}</a><br>
+            <a (click)="choice(2)" href="javascript:void(0)">2 : {{ option2 }}</a><br>
+            <a (click)="choice(3)" href="javascript:void(0)">3 : {{ option3 }}</a><br>
+            <a (click)="choice(4)" href="javascript:void(0)">4 : {{ option4 }}</a>
+        </div>
     </div>
 
-    <div class="option-text">
-      <p><a href="javascript:void(0)" (click)="choice(1)">1 : {{option1}}</a></p>
-      <p><a href="javascript:void(0)" (click)="choice(2)">2 : {{option2}}</a></p>
-      <p><a href="javascript:void(0)" (click)="choice(3)">3 : {{option3}}</a></p>
-      <p><a href="javascript:void(0)" (click)="choice(4)">3 : {{option4}}</a></p>
-    </div>
+    <!-- Page droite de la scène -->
+    <div class="page-right">
+        <!-- Titre à droite -->
+        <div class="title-right">
+            <h1>
+                {{ localisation }}
+            </h1>
+        </div>
 
-    <div class="bottom-text-left">
-      <p>Info</p>
-      <p>Info</p>
+        <!-- Contenu image à droite -->
+        <div class="content-img-right">
+            <img [src]="'assets/location/' + storyImg" alt="Image de {{ localisation }}">
+        </div>
     </div>
-  </div>
-
-
-  <div class="page-right">
-    <div class="title-right">
-      <h1>
-        Combat contre :
-      </h1>
-    </div>
-    <div class="content-text">
-      <p>
-        Description du monstre
-      </p>
-      <p>
-        PV de
-      </p>
-      <p>
-        Défense de
-      </p>
-      <p>
-        Attaque de
-      </p>
-    </div>
-
-    <div class="bottom-text-right">
-      <p>Info</p>
-      <p>Info</p>
-    </div>
-  </div>
 </div>

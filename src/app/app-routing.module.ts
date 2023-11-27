@@ -5,20 +5,14 @@ import {HomeComponent} from "home/home.component"
 import {FightComponent} from "./fight/fight.component";
 //import { FightResolver } from "fight/fight.resolver"
 
-const routes: Routes = [
-  {path: "", component: HomeComponent},
-  {
-    path: 'fight', component: FightComponent,
-    //resolve: {
-    //majors: FightResolver,
-    //},
-  },
-  {path: 'story', component: StoryComponent},
-]
+const routes: Routes = [{path: "", component: HomeComponent}, {
+  path: 'fight', component: FightComponent, //resolve: {
+  //majors: FightResolver,
+  //},
+}, {path: 'story', component: StoryComponent},]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  imports: [RouterModule.forRoot(routes)], exports: [RouterModule],
 })
 export class AppRoutingModule {
 }
