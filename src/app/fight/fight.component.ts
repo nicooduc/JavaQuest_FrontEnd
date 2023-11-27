@@ -41,8 +41,6 @@ export class FightComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             idMonster = params['idMonster'];
             this.storyChoice = params['storyChoice'];
-            console.log(idMonster);
-            console.log(this.storyChoice);
         });
         // Appel au service pour commencer le combat
         this.fightService.startCombat(idMonster).subscribe((opponents: Opponent[]) => {
@@ -85,7 +83,6 @@ export class FightComponent implements OnInit {
         if (this.opponents && this.monsterIndex !== undefined && this.heroIndex !== undefined) {
             this.monsterName = this.opponents[this.monsterIndex]?.name;
             this.monsterImg = this.opponents[this.monsterIndex]?.image;
-            console.log("monster image" + this.monsterImg);
             this.monsterHP = this.opponents[this.monsterIndex]?.healthPoint;
             this.monsterAtk = this.opponents[this.monsterIndex]?.attackPoint;
             this.monsterDef = this.opponents[this.monsterIndex]?.defensePoint;
@@ -127,7 +124,6 @@ export class FightComponent implements OnInit {
         this.fightService.endFight(success).subscribe((xpGain: number) => {
             if (success) {
                 if (xpGain < 0) {
-                    console.log("Level Up");
                     this.xpGain = Math.abs(xpGain);
                     const lvlUpMessage = document.getElementById('lvl-up-message');
                     const closeLvlUpMessage = document.getElementById('close-lvl-up-message');
@@ -152,7 +148,6 @@ export class FightComponent implements OnInit {
                         });
                     }
                 }
-                console.log(xpGain);
             } else {
                 const deathMessage = document.getElementById('death-message');
                 const closedeathMessage = document.getElementById('close-death-message');

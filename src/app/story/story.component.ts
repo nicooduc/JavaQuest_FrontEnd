@@ -29,12 +29,10 @@ export class StoryComponent implements OnInit {
         // Récupération du choix d'histoire depuis les paramètres de l'URL
         this.route.queryParams.subscribe((params) => {
             this.storyChoice = params["storyChoice"];
-            console.log("Appel route : " + this.storyChoice);
         });
 
         // Si storyChoice est null, affecte une valeur par défaut de 1
         this.storyChoice = this.storyChoice ?? 1;
-        console.log("Final choice : " + this.storyChoice);
 
         // Appel du service pour démarrer l'histoire en fonction du choix
         this.storyService.startStory(this.storyChoice).subscribe((story: Story) => {
