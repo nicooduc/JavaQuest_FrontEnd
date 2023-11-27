@@ -156,7 +156,7 @@ export class FightComponent implements OnInit {
                     deathMessage.style.display = 'block';
                     closedeathMessage.addEventListener('click', () => {
                         deathMessage.style.display = 'none';
-                        this.router.navigate(['/story'], {queryParams: {storyChoice: 99}}); //TODO remplacer 99 par l'id de story de mort
+                        this.router.navigate(['/story'], {queryParams: {storyChoice: this.storyChoice}});
                     });
                 }
             }
